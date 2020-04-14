@@ -5,7 +5,7 @@ O Mongo se parece um pouco com a sintaxe da linguagem `javascript`,e é usada
 como comandos.
 Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
 
-### Comandos
+## Comandos
 * db.createCollection(o nome da coleção)
     * Irá criar uma coleção,apos isso entre para dentro da coleção para inserir dados
 
@@ -18,8 +18,8 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
     *   pretty() - devolve os dados de maneira formatada
 
 * OUR | IN - 
-    * {$or:  [{"parametro"},{"parametro"}]}
-    * "parametro":{$in:[array] }
+    * {$or:  [{"parametro"},{"parametro"}]} - Comparar se as duas condições sao verdade
+    * "parametro":{$in:[array] } 
 
 * db.(suaColeção).update()
 
