@@ -10,5 +10,7 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
     * Irá criar uma coleção,apos isso entre para dentro da coleção para inserir dados
 * db.(suaColeção).insert();
     * inserção de dados
-* dv.(suaColeção).find();
+* db.(suaColeção).find();
     * localização/mostrar dados inseridos
+* db.(suaColeção).remove({"_id":ObjectId("")})
+    * Remover do banco de dados passando como parametro um id
