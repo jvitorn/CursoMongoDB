@@ -30,5 +30,10 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
     * Mult - Por padrao o UPDATE só ira atualizar para o primeiro dado, para atualizar em varios sera necessario utilizar *`{mult:true}`*,apos o $set EX:
         `db.(coleção).update({"parametro"},{$set:{"campo":"informação"}},{multi:true})`
 
+    * PUSH - Atualizar e cadastrar mais um iten no seu ARRAY sera utilizado o *`$push`* para a inserção de somente 1 dado, EX:
+        `db.(coleção).update({parametro},{ $push:{ARRAY:"nova informação"}})` 
+        * EACH  - Para Inserir varias informações de um ARRAY será utilizado o *`*$each`* EX:
+        `db.(coleção).update({parametro},{ $push:{ARRAY:{$each:[ARRAY]}})` 
+
 * db.(suaColeção).remove({"_id":ObjectId("")})
     * Remover do banco de dados passando como parametro um id
