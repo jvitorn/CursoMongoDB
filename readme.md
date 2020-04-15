@@ -59,8 +59,8 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
     >`db.alunos.find().sort({"nome":1})`
 
     para ordernar o campo nome dos nossos dados com o parametro '1' , esse parametro é equivalente ao ASC nas tabelas SQL , ou seja , será listado os dados cujo o nome esteja em order Alfabetica
-    * 1  - Equivalente ao **ASC**
-    * -1 - Equivalente ao **DESC** 
+    * **1**  - Equivalente ao **ASC**
+    * **-1** - Equivalente ao **DESC** 
 
     #### LIMIT  - 
     Equivalente ao Limite de resultados para ser enviado ao banco de dados,usado ao final do parametro passando o seguinte comando `.limit()`
@@ -78,9 +78,34 @@ enviar as coordenadas , é exigido o seguinte atributo `type:string`  para passa
 
 Os proprios indices são um pouco autoexplicativos,então não tem muito o que comentar, no curso é usado o Type:Point 
 
+## Buscando por Proximidade
+![Aproximação](https://www.azleads.com.br/blog/wp-content/uploads/2019/12/explorar-empresas2-1024x573.png)
+
+* **db.alunos.createIndex({localização:"2dsphere"})** - Será necessario criar uma
+busca, para que possamos solicitar uma agregação de valores para a coleção 
+
+* **db.alunos.aggregate()** - após isso será usado este comando para a busca de aggregações , Ex :
+
+```
+db.alunos.aggregate([
+{ 
+    $geoNear:{
+        near:{   
+            coordinates: [-23.5640265, -46.6527128],
+            type:"Point"
+        },
+        distanceField:"distancia.calculada",
+        spherical:true
+    }
+}
+])
+```
+
 ## Importação
 O MongoDB suporta importação de arquivos *`.json`* e para continuar a sessao de posicionamento e buscas por aproximidades foi necessario a importação do arquivo 'alunos.json' que se encontra no projeto.
 Para importar basta utilizar o comando 
 > ```mongoimport -c alunos --jsonArray < alunos.json```
 
 Feito isso será importado 19 registros/documentos na sua coleção,Para conferir se deu certo basta usar o ``db.alunos.find()``
+
+
