@@ -17,7 +17,7 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
     * localização/mostrar de uma maneira espefica podera adicionar o parametro {parametro} para localizar
     *   pretty() - devolve os dados de maneira formatada
 
-*db.(suaColeção).findOne();
+* `db.(suaColeção).findOne()`;
     * Localiza e mostra os dados inseridos de apenas do primeiro registro
 
 
@@ -40,7 +40,15 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
         `db.(coleção).update({parametro},{ $push:{ARRAY:"nova informação"}})` 
         * EACH  - Para Inserir varias informações de um ARRAY será utilizado o *`*$each`* EX:
         `db.(coleção).update({parametro},{ $push:{ARRAY:{$each:[ARRAY]}})` 
-    * GREATER THAN (Maior Que ...) - Para poder fazer essa comparação sera necessario usar o seguinte comando *`$gt{parametro}`*,EX:`db.alunos.find({"notas":{$gt:8.5}})`
+        
+    * GREATER THAN (Maior Que ... - $gt) - Para poder fazer essa comparação sera necessario usar o seguinte comando *`$gt{parametro}`*,EX:`db.alunos.find({"notas":{$gt:8.5}})`
+    * LESS THAN (Menor que ... - $lt)    - Para poder fazer essa comparação será necessario usar o seguinte comando *`$lt{parametro}`*,EX:`db.alunos.find({"notas":{$lt:5}})`
+
+    * ORDER BY - Usamos para ordenar nossos dados o parametro *`.sort({objeto})`* para fazer essa organização , usamos no exemplo a seguir :`db.alunos.find().sort({"nome":1})` para ordernar o campo nome dos nossos dados com o parametro '1' , esse parametro é equivalente ao ASC nas tabelas SQL , ou seja , será listado os dados cujo o nome esteja em order Alfabetica
+        - '1'  - Equivalente ao ASC
+        - '-1' - Equivalente ao DESC 
+
+    * LIMIT  - Equivalente ao Limite de resultados para ser enviado ao banco de dados,usado ao final do parametro passando o seguinte comando `.limit()`
 
 
 * db.(suaColeção).remove({"_id":ObjectId("")})
