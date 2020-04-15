@@ -17,11 +17,17 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
     * localização/mostrar de uma maneira espefica podera adicionar o parametro {parametro} para localizar
     *   pretty() - devolve os dados de maneira formatada
 
-* OUR | IN - 
-    * {$or:  [{"parametro"},{"parametro"}]}
-    * "parametro":{$in:[array] }
+*db.(suaColeção).findOne();
+    * Localiza e mostra os dados inseridos de apenas do primeiro registro
+
+
+   
 
 * db.(suaColeção).update()
+
+    * OUR | IN - 
+        * {$or:  [{"parametro"},{"parametro"}]}
+        * "parametro":{$in:[array] }
 
     * SET  - Será necessario passar depois do parametro um *`{$set:{parametro:"nova Informação"}}`* para poder atualizar o dado EX:
        
@@ -34,6 +40,8 @@ Ele cria no lugar de tabelas Uma *Coleção* de dados onde sera manipulada.
         `db.(coleção).update({parametro},{ $push:{ARRAY:"nova informação"}})` 
         * EACH  - Para Inserir varias informações de um ARRAY será utilizado o *`*$each`* EX:
         `db.(coleção).update({parametro},{ $push:{ARRAY:{$each:[ARRAY]}})` 
+    * GREATER THAN (Maior Que ...) - Para poder fazer essa comparação sera necessario usar o seguinte comando `$gt{parametro}`,EX:`db.alunos.find({"notas":{$gt:8.5}})`
+
 
 * db.(suaColeção).remove({"_id":ObjectId("")})
     * Remover do banco de dados passando como parametro um id
